@@ -90,6 +90,7 @@ const projects: Project[] = [
     icon: Receipt,
     accent: '#be4c00',
     repo: 'https://github.com/Rudrasamadhiya/POSSystem',
+    live: 'https://possystem-pvup.onrender.com/',
   },
 ];
 
