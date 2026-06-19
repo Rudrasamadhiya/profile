@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Check, Github, Layers, Brain, Receipt } from 'lucide-react';
+import { ExternalLink, Check, Github, Layers, Brain, Receipt, ShoppingCart } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import TiltCard from '../components/TiltCard';
 
@@ -16,47 +16,66 @@ interface Project {
   icon: typeof Layers;
   accent: string;
   live?: string;
+  repo?: string;
 }
 
 const projects: Project[] = [
   {
-    id: 'flowlink',
+    id: 'instant-kirana',
     n: '01',
-    name: 'FlowLink',
-    tagline: 'Hierarchical knowledge & problem-solving platform',
-    category: 'Backend · Firestore · RBAC',
+    name: 'Instant Kirana',
+    tagline: 'Distributed hyperlocal quick-commerce platform',
+    category: 'Distributed · React Native · NestJS',
     problem:
-      'Traditional discussion platforms lack structured hierarchy and governance. Designed a scalable backend with hierarchical node architecture and RBAC-based access control.',
+      'Blinkit-style 10–45 minute grocery delivery for Tier-2/3 India — turning neighbourhood kirana shops into micro-fulfilment centres instead of expensive dark stores.',
     bullets: [
-      'Modeled normalized NoSQL schema in Firestore with user indexing, membership rules, and secure access policies.',
-      'Built end-to-end workflow engine: problem creation → moderation → approval → solution validation → voting, with state + notifications.',
-      'Optimized read/write paths for performant, scalable data retrieval.',
+      'Architected 3 React Native apps (customer, kirana owner, delivery partner) + a web admin dashboard, backed by 7 NestJS microservices.',
+      'Built real-time order & delivery tracking over Socket.IO with infinite-retry reconnect and a REST-polling fallback for flaky 3G networks.',
+      'Cut perceived latency with a multi-layer caching stack (Redis + edge + image CDN + predictive prefetch); JWT auth and Razorpay payments.',
     ],
-    stack: ['Java', 'Firebase', 'Firestore', 'React'],
-    icon: Layers,
-    accent: '#b600a8',
+    stack: ['React Native', 'NestJS', 'PostgreSQL', 'MongoDB', 'Redis', 'Socket.IO', 'Docker'],
+    icon: ShoppingCart,
+    accent: '#1A6E4A',
+    repo: 'https://github.com/Rudrasamadhiya/instant-kirana',
   },
   {
     id: 'prepsharp',
     n: '02',
     name: 'PrepSharp.in',
-    tagline: 'Computer-Based Testing (CBT) simulation platform',
-    category: 'Live · Spring Boot · REST',
+    tagline: 'Computer-Based Testing (CBT) exam platform',
+    category: 'Live · Next.js · Firebase',
     problem:
-      'Built a scalable CBT backend that simulates competitive exams with structured question categorization and analytics.',
+      'A live exam-prep platform (web + Android) simulating competitive exams, serving a 133,000+ question bank and 241 full-length JEE Main & Advanced papers.',
     bullets: [
-      'Developed RESTful APIs for authentication, exam state management, scoring engine, and answer review.',
-      'Engineered an automated PDF data-extraction pipeline (chapter, difficulty, answer-type) with low-latency DB queries.',
-      'Designed a modular backend architecture focused on performance and maintainability.',
+      'Shipped a live web app (Next.js + React) and an Android app (React Native, in Google Play review) with timed tests, scoring engine, and answer review.',
+      'Engineered an automated PDF extraction pipeline parsing chapter, difficulty, and answer-type metadata into a normalized Firestore question bank.',
+      'Added Google Sign-In, shared KaTeX math rendering across web & mobile, and Chart.js analytics dashboards.',
     ],
-    stack: ['Java', 'Spring Boot', 'REST APIs', 'Firestore'],
+    stack: ['Next.js', 'React', 'TypeScript', 'Firebase', 'React Native', 'KaTeX'],
     icon: Brain,
     accent: '#7621b0',
     live: 'https://prepsharp.in',
   },
   {
-    id: 'pos',
+    id: 'flowlink',
     n: '03',
+    name: 'FlowLink',
+    tagline: 'Hierarchical knowledge & problem-solving platform',
+    category: 'Hackathon · Firestore · RBAC',
+    problem:
+      'Built at HackAxios (Team DRONA) — a structured information-flow platform with hierarchical nodes and RBAC-based governance for routing issues to the right people.',
+    bullets: [
+      'Modeled a normalized Firestore schema with user indexing, membership rules, and secure access policies.',
+      'Built an end-to-end workflow: create → moderate → approve → vote, with duplicate detection and automatic escalation.',
+      'Optimized read/write paths for performant, scalable data retrieval.',
+    ],
+    stack: ['React', 'Firebase', 'Firestore', 'RBAC'],
+    icon: Layers,
+    accent: '#b600a8',
+  },
+  {
+    id: 'pos',
+    n: '04',
     name: 'POS System',
     tagline: 'Inventory & transaction management',
     category: 'Java · OOP · Reliability',
@@ -70,6 +89,7 @@ const projects: Project[] = [
     stack: ['Java', 'OOP', 'File Handling', 'Reporting'],
     icon: Receipt,
     accent: '#be4c00',
+    repo: 'https://github.com/Rudrasamadhiya/POSSystem',
   },
 ];
 
@@ -170,7 +190,9 @@ function ProjectStackedCard({
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com/Rudrasamadhiya"
+              href={project.repo ?? 'https://github.com/Rudrasamadhiya'}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA]/40 text-[#D7E2EA] uppercase tracking-widest text-xs px-4 py-2.5 hover:bg-[#D7E2EA]/10 transition-colors"
             >
               <Github className="w-3.5 h-3.5" strokeWidth={2} />

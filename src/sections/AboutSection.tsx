@@ -4,12 +4,12 @@ import TiltCard from '../components/TiltCard';
 import CountUp from '../components/CountUp';
 
 const aboutText =
-  "Computer Science undergraduate at IIIT Bhopal with strong foundations in DSA and backend system design. Proficient in Java and building scalable applications with Spring Boot and RESTful architecture — focused on writing efficient, maintainable code and shipping real products.";
+  "Computer Science (Data Science) undergraduate at IIIT Bhopal who likes shipping real, production-grade software. I work full-stack across React, Next.js, React Native and Node / NestJS — building scalable, distributed systems and writing clean, maintainable code.";
 
 const stats = [
-  { value: '3+', label: 'Projects shipped' },
+  { value: '133K+', label: 'Question bank · PrepSharp' },
+  { value: '10+', label: 'Open-source PRs · GSSoC' },
   { value: '2nd', label: 'Place · RootRush CTF' },
-  { value: '2025', label: 'IIIT Bhopal cohort' },
 ];
 
 export default function AboutSection() {
@@ -70,11 +70,11 @@ export default function AboutSection() {
             <p className="mono text-sm leading-relaxed text-[#bbccd7]">
               <span className="text-[#8b92b0]"># Currently</span>
               <br />
-              Shipping <span className="text-[#b600a8]">PrepSharp.in</span> — a Java + Spring Boot
-              CBT platform — and <span className="text-[#b600a8]">FlowLink</span>, a hierarchical
-              knowledge engine on Firestore. Recently took{' '}
-              <span className="text-[#bbccd7]">2nd place</span> at RootRush 2026 CTF with team{' '}
-              <span className="text-[#bbccd7]">Ctrl Alt Defend</span>.
+              Running <span className="text-[#b600a8]">PrepSharp.in</span> — a live CBT exam platform
+              (Next.js + Firebase, Android app in Play review) — and building{' '}
+              <span className="text-[#b600a8]">Instant Kirana</span>, a distributed quick-commerce
+              platform (React Native + NestJS microservices). Contributing to open source via{' '}
+              <span className="text-[#bbccd7]">GSSoC 2026</span> (10+ merged PRs) and sharpening DSA.
             </p>
           </div>
         </FadeIn>

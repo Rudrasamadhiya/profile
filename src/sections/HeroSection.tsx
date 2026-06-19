@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import ContactButton from '../components/ContactButton';
 import FloatingCube from '../components/FloatingCube';
 import OrbitShapes from '../components/OrbitShapes';
+
+const RESUME_URL = '/Rudra_Samadhiya_Resume.pdf';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -14,7 +16,7 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const TYPED = 'whoami → rudra samadhiya · iiit bhopal · software dev';
+const TYPED = 'whoami → rudra samadhiya · iiit bhopal · full-stack dev';
 
 export default function HeroSection() {
   const [typed, setTyped] = useState('');
@@ -66,6 +68,19 @@ export default function HeroSection() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs md:text-sm uppercase tracking-widest text-white font-medium transition-transform duration-300 hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, #b600a8, #7621b0)',
+                boxShadow: '0 10px 28px -10px rgba(182,0,168,0.7)',
+              }}
+            >
+              <FileText className="w-3.5 h-3.5" strokeWidth={2} />
+              Resume
+            </a>
           </div>
           <button
             type="button"
@@ -93,11 +108,22 @@ export default function HeroSection() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="mono uppercase tracking-widest text-sm text-[#d7e2ea] py-2 border-b border-[#d7e2ea]/10 last:border-0"
+                className="mono uppercase tracking-widest text-sm text-[#d7e2ea] py-2 border-b border-[#d7e2ea]/10"
               >
                 {link.label}
               </a>
             ))}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="mono uppercase tracking-widest text-sm text-white py-2.5 mt-1 rounded-xl flex items-center justify-center gap-2"
+              style={{ background: 'linear-gradient(135deg, #b600a8, #7621b0)' }}
+            >
+              <FileText className="w-4 h-4" strokeWidth={2} />
+              Resume
+            </a>
           </div>
         </motion.div>
       </FadeIn>
@@ -134,21 +160,40 @@ export default function HeroSection() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-5 sm:gap-6">
             <FadeIn delay={0.35} y={20}>
               <p
-                className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[420px]"
+                className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[440px]"
                 style={{ fontSize: 'clamp(0.78rem, 1.4vw, 1.4rem)' }}
               >
-                software developer · backend systems · problem solver
+                full-stack developer · distributed systems · problem solver
                 <span
                   className="block mt-2 text-[#8b92b0] normal-case font-normal tracking-normal"
                   style={{ fontSize: 'clamp(0.75rem, 1.1vw, 1rem)' }}
                 >
-                  CSE @ <span className="text-[#bbccd7]">IIIT Bhopal</span>. Building scalable
-                  backends with Java, Spring Boot &amp; Firestore.
+                  CSE (Data Science) @ <span className="text-[#bbccd7]">IIIT Bhopal</span>. Building
+                  products end to end with React, Next.js, React Native &amp; Node / NestJS.
+                </span>
+                <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#28c840]/40 bg-[#28c840]/10 px-3 py-1.5 normal-case tracking-normal text-[#bbf7d0]"
+                  style={{ fontSize: 'clamp(0.7rem, 1vw, 0.85rem)' }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#28c840] shadow-[0_0_10px_#28c840] animate-pulse" />
+                  Open to SWE internships · Summer 2027
                 </span>
               </p>
             </FadeIn>
             <FadeIn delay={0.5} y={20}>
               <div className="flex items-center gap-3 flex-wrap">
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full text-white uppercase tracking-widest text-xs md:text-sm px-5 py-2.5 md:px-7 md:py-3.5 transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{
+                    background: 'linear-gradient(135deg, #b600a8, #7621b0)',
+                    boxShadow: '0 14px 32px -12px rgba(182,0,168,0.7)',
+                  }}
+                >
+                  <FileText className="w-4 h-4" strokeWidth={2} />
+                  Resume
+                </a>
                 <a
                   href="#projects"
                   className="hidden sm:inline-flex rounded-full border border-[#D7E2EA]/40 text-[#D7E2EA] uppercase tracking-widest text-xs md:text-sm px-5 py-2.5 md:px-7 md:py-3.5 hover:bg-[#D7E2EA]/10 transition-colors"

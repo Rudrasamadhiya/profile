@@ -1,24 +1,24 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, Trophy } from 'lucide-react';
+import { GraduationCap, Trophy, GitMerge } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import TiltCard from '../components/TiltCard';
 
 const timeline = [
   {
     period: '2025 — 2029',
-    title: 'B.Tech, Computer Science',
+    title: 'B.Tech, Computer Science (Data Science)',
     place: 'Indian Institute of Information Technology, Bhopal',
     desc:
-      'Bachelor of Technology · strong foundations in DSA, OOP, Operating Systems, DBMS, and backend system design.',
-    tags: ['DSA', 'OOP', 'Operating Systems', 'DBMS'],
+      'CGPA 8.6 / 10 · strong foundations in DSA, OOP, Operating Systems, DBMS, and distributed system design.',
+    tags: ['DSA', 'OOP', 'Operating Systems', 'DBMS', 'System Design'],
   },
   {
     period: '— 2024',
     title: 'Schooling · Class X & XII',
     place: 'The Sanskaar Valley School, Bhopal',
     desc:
-      'Senior and secondary schooling — physics, chemistry, mathematics and computer science.',
+      'CBSE · Class XII: 91.25% · Class X: 92% — physics, chemistry, mathematics and computer science.',
     tags: ['Physics', 'Chemistry', 'Mathematics', 'Computer Science'],
   },
 ];
@@ -127,9 +127,41 @@ export default function EducationSection() {
                 2nd Place — RootRush 2026 (Jeopardy-style CTF)
               </h3>
               <p className="text-[#8b92b0] text-sm mt-1 leading-relaxed">
-                Organized by Xploit, Cybersecurity Club, IIIT Bhopal · NIIMACK 2026.
-                Solved forensics, security analysis, and AI-based scenarios with team{' '}
-                <span className="text-[#bbccd7]">Ctrl Alt Defend</span>.
+                Led team <span className="text-[#bbccd7]">Ctrl Alt Defend</span> · organized by
+                Xploit, Cybersecurity Club, IIIT Bhopal · NIIMACK 2026. Solved forensics, security
+                analysis, and AI-based scenarios.
+              </p>
+            </div>
+          </div>
+          </TiltCard>
+        </FadeIn>
+
+        <FadeIn delay={0.3}>
+          <TiltCard intensity={6} className="mt-5 rounded-3xl">
+          <div className="code-card p-6 sm:p-8 flex items-center gap-5 sm:gap-6">
+            <div
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: 'linear-gradient(135deg, #1A6E4A, #28c840)',
+                color: '#fff',
+              }}
+            >
+              <GitMerge className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.6} />
+            </div>
+            <div>
+              <div className="mono text-xs uppercase tracking-widest text-[#8b92b0] mb-1">
+                // open source · 2026
+              </div>
+              <h3
+                className="font-medium text-[#d7e2ea]"
+                style={{ fontSize: 'clamp(1rem, 1.6vw, 1.3rem)' }}
+              >
+                GSSoC 2026 — 10+ Merged Pull Requests
+              </h3>
+              <p className="text-[#8b92b0] text-sm mt-1 leading-relaxed">
+                GirlScript Summer of Code · merged 10+ PRs across community projects — bug fixes,
+                new API endpoints, and performance/security improvements. Earned 11 badges including
+                the rare <span className="text-[#bbccd7]">Power Contributor</span>.
               </p>
             </div>
           </div>

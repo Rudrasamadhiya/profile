@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code2, Database, Wrench } from 'lucide-react';
+import { Code2, Database, Layers } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import TiltCard from '../components/TiltCard';
 
@@ -8,24 +8,26 @@ const skillGroups = [
   {
     icon: Code2,
     title: 'Languages & CS Core',
-    items: ['Java (Primary)', 'C++', 'DSA', 'OOP', 'Operating Systems', 'DBMS'],
+    items: ['TypeScript', 'JavaScript', 'Java', 'C++', 'DSA', 'OOP', 'Operating Systems', 'DBMS'],
   },
   {
-    icon: Database,
-    title: 'Backend & Data',
+    icon: Layers,
+    title: 'Frontend & Backend',
     items: [
-      'Spring Boot',
+      'React',
+      'Next.js',
+      'React Native (Expo)',
+      'Node.js',
+      'NestJS',
       'REST APIs',
-      'MVC Architecture',
-      'Auth & Authorization',
-      'Firestore (NoSQL)',
-      'Relational DBs',
+      'WebSockets',
+      'Microservices',
     ],
   },
   {
-    icon: Wrench,
-    title: 'Tools & Platforms',
-    items: ['Git', 'GitHub', 'Firebase', 'VS Code'],
+    icon: Database,
+    title: 'Data, Cache & DevOps',
+    items: ['PostgreSQL', 'MongoDB', 'Firebase / Firestore', 'Redis', 'Docker', 'Git & GitHub', 'Vercel'],
   },
 ];
 

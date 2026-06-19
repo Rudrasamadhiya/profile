@@ -6,38 +6,34 @@ import FadeIn from '../components/FadeIn';
 type Tech = { name: string; slug: string; color: string };
 
 const row1: Tech[] = [
-  { name: 'Java', slug: 'openjdk', color: 'ED8B00' },
-  { name: 'Spring Boot', slug: 'spring', color: '6DB33F' },
-  { name: 'Spring MVC', slug: 'spring', color: '6DB33F' },
-  { name: 'MySQL', slug: 'mysql', color: '4479A1' },
-  { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
   { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
+  { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
+  { name: 'React', slug: 'react', color: '61DAFB' },
+  { name: 'Next.js', slug: 'nextdotjs', color: 'ffffff' },
+  { name: 'React Native', slug: 'react', color: '61DAFB' },
+  { name: 'Tailwind', slug: 'tailwindcss', color: '06B6D4' },
   { name: 'HTML5', slug: 'html5', color: 'E34F26' },
   { name: 'CSS3', slug: 'css3', color: '1572B6' },
-  { name: 'Firebase', slug: 'firebase', color: 'FFCA28' },
 ];
 
 const row2: Tech[] = [
-  { name: 'React', slug: 'react', color: '61DAFB' },
   { name: 'Node.js', slug: 'nodedotjs', color: '5FA04E' },
-  { name: 'Git', slug: 'git', color: 'F05032' },
-  { name: 'GitHub', slug: 'github', color: 'ffffff' },
-  { name: 'VS Code', slug: 'vscodium', color: '2F80ED' },
-  { name: 'Postman', slug: 'postman', color: 'FF6C37' },
-  { name: 'Linux', slug: 'linux', color: 'FCC624' },
-  { name: 'REST APIs', slug: 'fastapi', color: '009688' },
-  { name: 'Figma', slug: 'figma', color: 'F24E1E' },
+  { name: 'NestJS', slug: 'nestjs', color: 'E0234E' },
+  { name: 'PostgreSQL', slug: 'postgresql', color: '4169E1' },
+  { name: 'MongoDB', slug: 'mongodb', color: '47A248' },
+  { name: 'Redis', slug: 'redis', color: 'DC382D' },
+  { name: 'Socket.IO', slug: 'socketdotio', color: 'ffffff' },
+  { name: 'Firebase', slug: 'firebase', color: 'FFCA28' },
 ];
 
 const row3: Tech[] = [
   { name: 'Java', slug: 'openjdk', color: 'ED8B00' },
-  { name: 'Spring Boot', slug: 'spring', color: '6DB33F' },
-  { name: 'MySQL', slug: 'mysql', color: '4479A1' },
-  { name: 'Firebase', slug: 'firebase', color: 'FFCA28' },
-  { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
-  { name: 'HTML5', slug: 'html5', color: 'E34F26' },
-  { name: 'CSS3', slug: 'css3', color: '1572B6' },
+  { name: 'Docker', slug: 'docker', color: '2496ED' },
   { name: 'Git', slug: 'git', color: 'F05032' },
+  { name: 'GitHub', slug: 'github', color: 'ffffff' },
+  { name: 'Vercel', slug: 'vercel', color: 'ffffff' },
+  { name: 'Postman', slug: 'postman', color: 'FF6C37' },
+  { name: 'Linux', slug: 'linux', color: 'FCC624' },
 ];
 
 function TechChip({ tech }: { tech: Tech }) {
@@ -123,8 +119,8 @@ export default function MarqueeSection() {
               className="mt-4 text-[#8b92b0] max-w-xl leading-relaxed"
               style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)' }}
             >
-              A pragmatic stack — JVM on the backend, modern web on the front, fast iteration
-              everywhere. Picked for shipping, not for showing off.
+              A pragmatic, TypeScript-first stack — React &amp; React Native on the front, Node /
+              NestJS microservices on the back. Picked for shipping, not for showing off.
             </p>
           </FadeIn>
 
@@ -176,18 +172,18 @@ export default function MarqueeSection() {
               <div className="flex items-center gap-3">
                 <span
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: '#6DB33F22' }}
+                  style={{ background: '#61DAFB22' }}
                 >
                   <img
-                    src="https://cdn.simpleicons.org/spring/6DB33F"
+                    src="https://cdn.simpleicons.org/react/61DAFB"
                     width={22}
                     height={22}
-                    alt="Spring"
+                    alt="React"
                   />
                 </span>
                 <div>
-                  <div className="text-[#d7e2ea] font-medium">Spring Boot</div>
-                  <div className="mono text-xs text-[#8b92b0]">backend engine</div>
+                  <div className="text-[#d7e2ea] font-medium">React &amp; Next.js</div>
+                  <div className="mono text-xs text-[#8b92b0]">full-stack core</div>
                 </div>
               </div>
               <div className="mt-auto">
@@ -199,8 +195,8 @@ export default function MarqueeSection() {
                   <div
                     className="h-full rounded-full"
                     style={{
-                      width: '88%',
-                      background: 'linear-gradient(90deg, #6DB33F, #b600a8)',
+                      width: '90%',
+                      background: 'linear-gradient(90deg, #61DAFB, #b600a8)',
                     }}
                   />
                 </div>
@@ -218,10 +214,10 @@ export default function MarqueeSection() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { name: 'Java', slug: 'openjdk', color: 'ED8B00' },
-                  { name: 'MySQL', slug: 'mysql', color: '4479A1' },
+                  { name: 'Next.js', slug: 'nextdotjs', color: 'ffffff' },
+                  { name: 'React', slug: 'react', color: '61DAFB' },
                   { name: 'Firebase', slug: 'firebase', color: 'FFCA28' },
-                  { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
+                  { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
                 ].map((t) => (
                   <div
                     key={t.name}
@@ -238,7 +234,7 @@ export default function MarqueeSection() {
                 ))}
               </div>
               <div className="mono text-xs text-[#8b92b0] mt-auto">
-                Production stack for{' '}
+                Live in production —{' '}
                 <span className="text-[#bbccd7]">PrepSharp.in</span>
               </div>
             </div>
@@ -251,10 +247,10 @@ export default function MarqueeSection() {
               </div>
               <div className="flex items-center gap-3 flex-wrap">
                 {[
-                  { name: 'React', slug: 'react', color: '61DAFB' },
-                  { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
                   { name: 'Docker', slug: 'docker', color: '2496ED' },
-                  { name: 'AWS', slug: 'amazonaws', color: 'FF9900' },
+                  { name: 'Kubernetes', slug: 'kubernetes', color: '326CE5' },
+                  { name: 'AWS', slug: 'amazonwebservices', color: 'FF9900' },
+                  { name: 'CI/CD', slug: 'githubactions', color: '2088FF' },
                 ].map((t) => (
                   <span
                     key={t.name}

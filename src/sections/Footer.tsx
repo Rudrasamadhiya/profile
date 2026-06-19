@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone, ArrowUpRight, FileText } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import TiltCard from '../components/TiltCard';
 
@@ -54,9 +54,24 @@ export default function Footer() {
               className="text-[#bbccd7] text-center max-w-xl leading-relaxed"
               style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.15rem)' }}
             >
-              Open to internships and backend collaborations. Based in Bhopal, India.
+              Open to software engineering internships and collaborations. Based in Bhopal, India.
               Drop a line — I reply fast.
             </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <a
+              href="/Rudra_Samadhiya_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full text-white uppercase tracking-widest text-xs sm:text-sm px-6 py-3 transition-transform duration-300 hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, #b600a8, #7621b0)',
+                boxShadow: '0 14px 32px -12px rgba(182,0,168,0.7)',
+              }}
+            >
+              <FileText className="w-4 h-4" strokeWidth={2} />
+              Download Résumé
+            </a>
           </FadeIn>
         </div>
 
