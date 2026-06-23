@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Check, Github, Layers, Brain, Receipt, ShoppingCart } from 'lucide-react';
+import { ExternalLink, Check, Github, Layers, Brain, Receipt, ShoppingCart, Smartphone } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import TiltCard from '../components/TiltCard';
 
@@ -16,6 +16,7 @@ interface Project {
   icon: typeof Layers;
   accent: string;
   live?: string;
+  play?: string;
   repo?: string;
 }
 
@@ -43,18 +44,19 @@ const projects: Project[] = [
     n: '02',
     name: 'PrepSharp.in',
     tagline: 'Computer-Based Testing (CBT) exam platform',
-    category: 'Live · Next.js · Firebase',
+    category: 'Live · Web + Play Store',
     problem:
-      'A live exam-prep platform (web + Android) simulating competitive exams, serving a 133,000+ question bank and 241 full-length JEE Main & Advanced papers.',
+      'A live exam-prep platform — on the web and the Google Play Store — simulating competitive exams, serving a 133,000+ question bank and 241 full-length JEE Main & Advanced papers.',
     bullets: [
-      'Shipped a live web app (Next.js + React) and an Android app (React Native, in Google Play review) with timed tests, scoring engine, and answer review.',
-      'Engineered an automated PDF extraction pipeline parsing chapter, difficulty, and answer-type metadata into a normalized Firestore question bank.',
-      'Added Google Sign-In, shared KaTeX math rendering across web & mobile, and Chart.js analytics dashboards.',
+      'Shipped a live Next.js web app and a React Native Android app (live on the Google Play Store) on a shared Firestore backend — timed tests, a scoring engine, and instant answer review.',
+      'Engineered an automated PDF extraction pipeline parsing chapter, difficulty, and answer-type metadata into a normalized Firestore question bank, with shared KaTeX math rendering across web & mobile.',
+      'Added Google Sign-In, Chart.js performance analytics, and weak-chapter detection so students can track accuracy and timing after every test.',
     ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Firebase', 'React Native', 'KaTeX'],
+    stack: ['Next.js', 'React Native', 'TypeScript', 'Firebase', 'KaTeX', 'Chart.js'],
     icon: Brain,
     accent: '#7621b0',
     live: 'https://prepsharp.in',
+    play: 'https://play.google.com/store/apps/details?id=in.prepsharp.app',
   },
   {
     id: 'flowlink',
@@ -199,6 +201,17 @@ function ProjectStackedCard({
               <Github className="w-3.5 h-3.5" strokeWidth={2} />
               Code
             </a>
+            {project.play && (
+              <a
+                href={project.play}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA]/40 text-[#D7E2EA] uppercase tracking-widest text-xs px-4 py-2.5 hover:bg-[#D7E2EA]/10 transition-colors"
+              >
+                <Smartphone className="w-3.5 h-3.5" strokeWidth={2} />
+                Play Store
+              </a>
+            )}
             {project.live && (
               <a
                 href={project.live}

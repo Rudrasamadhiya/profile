@@ -8,7 +8,7 @@ const aboutText =
 
 const stats = [
   { value: '133K+', label: 'Question bank · PrepSharp' },
-  { value: '10+', label: 'Open-source PRs · GSSoC' },
+  { value: '16+', label: 'Open-source PRs · GSSoC' },
   { value: '2nd', label: 'Place · RootRush CTF' },
 ];
 
@@ -71,10 +71,10 @@ export default function AboutSection() {
               <span className="text-[#8b92b0]"># Currently</span>
               <br />
               Running <span className="text-[#b600a8]">PrepSharp.in</span> — a live CBT exam platform
-              (Next.js + Firebase, Android app in Play review) — and building{' '}
+              (Next.js + Firebase) now live on the Google Play Store — and building{' '}
               <span className="text-[#b600a8]">Instant Kirana</span>, a distributed quick-commerce
               platform (React Native + NestJS microservices). Contributing to open source via{' '}
-              <span className="text-[#bbccd7]">GSSoC 2026</span> (10+ merged PRs) and sharpening DSA.
+              <span className="text-[#bbccd7]">GSSoC 2026</span> (16+ merged PRs) and sharpening DSA.
             </p>
           </div>
         </FadeIn>

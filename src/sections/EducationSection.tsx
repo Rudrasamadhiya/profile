@@ -156,10 +156,10 @@ export default function EducationSection() {
                 className="font-medium text-[#d7e2ea]"
                 style={{ fontSize: 'clamp(1rem, 1.6vw, 1.3rem)' }}
               >
-                GSSoC 2026 — 10+ Merged Pull Requests
+                GSSoC 2026 — 16+ Merged Pull Requests
               </h3>
               <p className="text-[#8b92b0] text-sm mt-1 leading-relaxed">
-                GirlScript Summer of Code · merged 10+ PRs across community projects — bug fixes,
+                GirlScript Summer of Code · merged 16+ PRs across community projects — bug fixes,
                 new API endpoints, and performance/security improvements. Earned 11 badges including
                 the rare <span className="text-[#bbccd7]">Power Contributor</span>.
               </p>
