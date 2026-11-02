@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Samadhiya — Full-stack Engineer</title>
+  <meta name="description" content="Rudra Samadhiya — full-stack engineer, founder of PrepSharp.in, builder of AI agent bridges for Android and Expo. CSE (DS) @ IIIT Bhopal." />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__panel loader__panel--top"></div>
+    <div class="loader__panel loader__panel--bot"></div>
+    <div class="loader__stage">
+      <div class="loader__meta mono"><span>rudra samadhiya</span><span>portfolio · mmxxvi</span></div>
+      <svg class="loader__mark" viewBox="0 0 220 260"><text x="110" y="214" text-anchor="middle">R</text></svg>
+      <div class="loader__log mono" id="loaderLog"></div>
+      <div class="loader__count"><span id="loaderCount">0</span><i>%</i></div>
+      <div class="loader__bar"><i id="loaderBar"></i></div>
+    </div>
+  </div>
+
+  <canvas id="bg"></canvas>
+  <div class="world-labels" id="worldLabels" aria-hidden="true"></div>
+  <aside class="hud glass mono" id="hud" aria-hidden="true">
+    <div class="hud__compass"><div class="hud__strip" id="hudStrip"></div><span class="hud__needle"></span></div>
+    <canvas id="hudMap"></canvas>
+    <div class="hud__txt">
+      <span class="hud__k">sector</span><b id="hudSec">ORBIT</b>
+      <span id="hudXyz">X+000 Z+000</span>
+      <span id="hudAlt">ALT 000m</span>
+      <span class="hud__fps" id="hudFps">60 FPS</span>
+    </div>
+    <div class="hud__bar"><i id="hudBar"></i></div>
+  </aside>
+  <ul class="feed mono" id="feed" aria-hidden="true"></ul>
+  <div class="cursor" id="cursor"><span></span></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <header class="nav glass-bar">
+    <div class="nav__progress" id="navProgress"></div>
+    <a href="#top" class="nav__logo" data-hover>
+      <span class="nav__mark">R</span><span class="nav__brand">~/rudra<i>.dev</i></span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#agents" data-hover><i>02</i>Agents</a>
+      <a href="#work" data-hover><i>03</i>Work</a>
+      <a href="#systems" data-hover><i>04</i>Systems</a>
+      <a href="#live" data-hover><i>05</i>Live</a>
+      <a href="#wins" data-hover><i>06</i>Wins</a>
+    </nav>
+    <div class="nav__right">
+      <button class="nav__term mono" id="termOpen" data-hover aria-label="Open terminal"><span>&gt;_</span> terminal <kbd>⌘K</kbd></button>
+      <a href="#contact" class="nav__cta magnetic" data-hover><span class="pulse"></span> Open to work</a>
+      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links">
+      <a href="#about"><i>01</i>whoami</a>
+      <a href="#agents"><i>02</i>Agents</a>
+      <a href="#work"><i>03</i>Work</a>
+      <a href="#systems"><i>04</i>Systems</a>
+      <a href="#live"><i>05</i>Live</a>
+      <a href="#wins"><i>06</i>Wins</a>
+      <a href="#skills"><i>07</i>Toolbox</a>
+      <a href="#contact"><i>08</i>Say hi</a>
+    </nav>
+    <div class="menu__foot mono">
+      <a href="https://github.com/Rudrasamadhiya" target="_blank" rel="noopener">github ↗</a>
+      <a href="https://linkedin.com/in/rudra-samadhiya" target="_blank" rel="noopener">linkedin ↗</a>
+      <a href="mailto:Samadhiyarudra123@gmail.com">email ↗</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__meta mono reveal-up">
+        <span>// cse (data science) @ iiit bhopal</span>
+        <span class="hero__loc">bhopal, in — <b id="clock">--:--</b> ist</span>
+      </div>
+      <h1 class="hero__title">
+        <span class="line"><span class="word">Rudra</span></span>
+        <span class="line line--2"><em class="word">Samadhiya</em><span class="hero__badge word">full&#8209;stack engineer<br/>agents · mobile · backend</span></span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__lede reveal-up">
+          I build things that <span class="hl">ship</span> — open-source tools that let AI agents
+          drive <b>real phones</b>, backends that survive a 3G connection, and products
+          people actually use. Founder of <a href="https://prepsharp.in" target="_blank" rel="noopener" data-hover>PrepSharp.in</a>.
+        </p>
+        <div class="hero__actions reveal-up">
+          <a href="#agents" class="btn btn--primary magnetic" data-hover><span>./see-my-work</span><i>→</i></a>
+          <a href="https://github.com/Rudrasamadhiya" target="_blank" rel="noopener" class="btn btn--ghost magnetic" data-hover><span>github</span><i>↗</i></a>
+          <button class="btn btn--ghost btn--term magnetic" data-term data-hover><span>&gt;_ try the terminal</span><kbd>⌘K</kbd></button>
+        </div>
+      </div>
+      <div class="hero__scroll mono"><span>scroll</span><i></i></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>AI Agents</span><b>✦</b><span>MCP Servers</span><b>✦</b><span>React Native</span><b>✦</b><span>NestJS Microservices</span><b>✦</b><span>Next.js</span><b>✦</b><span>Kotlin</span><b>✦</b><span>Distributed Systems</span><b>✦</b><span>CTF</span><b>✦</b>
+        <span>AI Agents</span><b>✦</b><span>MCP Servers</span><b>✦</b><span>React Native</span><b>✦</b><span>NestJS Microservices</span><b>✦</b><span>Next.js</span><b>✦</b><span>Kotlin</span><b>✦</b><span>Distributed Systems</span><b>✦</b><span>CTF</span><b>✦</b>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+      <div class="section__label mono"><span>01</span> whoami</div>
+      <p class="about__big scrub">
+        I'd rather <em>ship</em> than talk about shipping. I like building the whole thing —
+        the product, the backend that keeps it standing, and the boring pipelines nobody sees.
+      </p>
+      <div class="stats glass">
+        <div class="stat tilt"><b data-count="3">0</b><span>open-source packages on npm</span></div>
+        <div class="stat tilt"><b data-count="10">0</b><sup>+</sup><span>merged PRs · GSSoC '26</span></div>
+        <div class="stat tilt"><b data-count="2">0</b><sup>×</sup><span>first place — Strategy Blitz 2.0 &amp; a 6-hour hackathon</span></div>
+        <div class="stat tilt"><b>#</b><b data-count="2">0</b><span>RootRush CTF 2026 — led Ctrl Alt Defend</span></div>
+      </div>
+    </section>
+
+    <!-- AGENTS -->
+    <section class="agents section" id="agents">
+      <div class="section__label mono"><span>02</span> new — the agent toolkit</div>
+      <div class="agents__grid">
+        <div class="agents__copy">
+          <h2 class="h2 split">Giving agents <em>hands</em> on real phones.</h2>
+          <p class="muted">
+            Claude Code, Cursor and Antigravity can write your app, but they can't see it.
+            So I built the bridges: three open-source packages on npm that let agents look
+            at a real device, tap, type, scroll, debug, and even cut the launch video.
+          </p>
+          <div class="agent-list">
+            <article class="agent glass tilt" data-screen="android" data-hover>
+              <div class="agent__top">
+                <span class="agent__icon">
+                  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.48l1.84-3.18a.38.38 0 00-.66-.38l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.66.38L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/></svg>
+                </span>
+                <div>
+                  <h3>Android Agent Bridge</h3>
+                  <span class="mono tag">android-agent-bridge · Kotlin · TypeScript</span>
+                </div>
+                <a class="agent__link" href="https://rudrasamadhiya.github.io/android-agent-bridge/" target="_blank" rel="noopener" aria-label="Open Android Agent Bridge">↗</a>
+              </div>
+              <p>Give your agent a whole Android phone. Screenshots with numbered elements, on-device OCR, taps, typing, device controls and AirDrop-style file transfer. One <code>npx</code>, one QR scan.</p>
+              <div class="chips"><span>27-mcp-tools</span><span>6-prompts</span><span>android-5.0+</span><span>on-device-ocr</span></div>
+            </article>
+
+            <div class="kit">
+              <div class="kit__head mono">
+                <span>expo agent kit <b>— two packages, one toolkit</b></span>
+                <a href="https://rudrasamadhiya.github.io/expo-agent-kit/" target="_blank" rel="noopener" data-hover>docs ↗</a>
+              </div>
+              <article class="agent glass tilt" data-screen="expo" data-hover>
+                <div class="agent__top">
+                  <span class="agent__icon mono">01</span>
+                  <div>
+                    <h3>expo-mcp-bridge</h3>
+                    <span class="mono tag">MCP server · Expo · React Native</span>
+                  </div>
+                  <a class="agent__link" href="https://github.com/Rudrasamadhiya/expo-mcp-bridge" target="_blank" rel="noopener" aria-label="Open expo-mcp-bridge">↗</a>
+                </div>
+                <p>Eyes and hands inside your Expo app on a real phone. The agent snapshots the screen, taps, types and scrolls through your real handlers, then reads the console errors and failed network requests each action caused.</p>
+                <div class="chips"><span>expo-go</span><span>iphone+android</span><span>console+network</span><span>one-component</span></div>
+              </article>
+              <article class="agent glass tilt" data-screen="video" data-hover>
+                <div class="agent__top">
+                  <span class="agent__icon mono">02</span>
+                  <div>
+                    <h3>expo-launch-video</h3>
+                    <span class="mono tag">agent-directed video · in-browser render</span>
+                  </div>
+                  <a class="agent__link" href="https://github.com/Rudrasamadhiya/expo-launch-video" target="_blank" rel="noopener" aria-label="Open expo-launch-video">↗</a>
+                </div>
+                <p>Ask for a launch video and the agent shoots your live app, picks the best takes, writes the captions and cuts it with motion graphics and sound. Tweak it in a promptable studio and export a <b>1080p MP4</b>, no After Effects needed.</p>
+                <div class="chips"><span>1080p-mp4</span><span>promptable-studio</span><span>auto-captions</span></div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="agents__stage">
+          <canvas id="phone"></canvas>
+          <div class="stage__term mono glass" id="term"></div>
+          <div class="stage__tabs mono" id="stageTabs"><span data-s="android">android</span><span data-s="expo">mcp-bridge</span><span data-s="video">launch-video</span></div>
+          <div class="stage__hint mono"><span>agent.demo — live</span><span>drag to spin</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work section" id="work">
+      <div class="section__label mono"><span>03</span> products & builds</div>
+      <h2 class="h2 split">Things people <em>actually</em> use.</h2>
+
+      <div class="projects">
+        <article class="project project--prep glass tilt" data-hover>
+          <div class="project__glow"></div>
+          <div class="project__head">
+            <span class="mono pill pill--live"><i></i>LIVE</span>
+            <span class="mono project__idx">/01</span>
+          </div>
+          <h3>PrepSharp<span>.in</span></h3>
+          <p>A JEE prep platform on the real NTA TCS iON CBT interface — web app + Android app. Scoring engine, answer review, an automated PDF question-extraction pipeline and KaTeX math rendering. I founded it and run it.</p>
+          <div class="project__nums">
+            <div><b>133K+</b><span>questions</span></div>
+            <div><b>241</b><span>JEE papers</span></div>
+            <div><b>2</b><span>platforms</span></div>
+          </div>
+          <div class="chips"><span>Next.js</span><span>React Native</span><span>Firestore</span><span>KaTeX</span></div>
+          <a class="project__cta" href="https://prepsharp.in" target="_blank" rel="noopener">Visit prepsharp.in ↗</a>
+        </article>
+
+        <article class="project project--kirana glass tilt" data-hover>
+          <div class="project__glow"></div>
+          <div class="project__head">
+            <span class="mono pill">DISTRIBUTED</span>
+            <span class="mono project__idx">/02</span>
+          </div>
+          <h3>Instant Kirana</h3>
+          <p>Blinkit-style 10–45 min quick commerce for Tier-2/3 India — turning neighbourhood kirana shops into micro-fulfilment centres. 3 React Native apps + admin on 7 NestJS microservices, Socket.IO live GPS, server-driven UI and multi-layer caching built for 3G.</p>
+          <div class="project__nums">
+            <div><b>4</b><span>client apps</span></div>
+            <div><b>7</b><span>microservices</span></div>
+            <div><b>5s</b><span>REST fallback</span></div>
+          </div>
+          <div class="chips"><span>NestJS</span><span>React Native</span><span>Redis</span><span>PostgreSQL</span><span>MongoDB</span><span>Razorpay</span></div>
+          <a class="project__cta" href="https://github.com/Rudrasamadhiya/instant-kirana" target="_blank" rel="noopener">Read the architecture ↗</a>
+        </article>
+
+        <article class="project project--flow glass tilt" data-hover>
+          <div class="project__glow"></div>
+          <div class="project__head">
+            <span class="mono pill">HACKXIOS 2K25</span>
+            <span class="mono project__idx">/03</span>
+          </div>
+          <h3>FlowLink</h3>
+          <p>A knowledge &amp; problem-solving platform with enterprise RBAC, built at HackXios 2K25 with Team DRONA — duplicate detection and automatic escalation baked into the workflow.</p>
+          <div class="chips"><span>React</span><span>Firebase</span><span>RBAC</span><span>Java</span></div>
+        </article>
+
+        <article class="project project--pos glass tilt" data-hover>
+          <div class="project__glow"></div>
+          <div class="project__head">
+            <span class="mono pill">ZERO DEPS</span>
+            <span class="mono project__idx">/04</span>
+          </div>
+          <h3>Multi-Store POS</h3>
+          <p>Multi-tenant point-of-sale in pure OOP Java — a transactional billing engine that never oversells stock, PBKDF2 hashing, RBAC, and pluggable CSV / PostgreSQL persistence. CI on both.</p>
+          <div class="chips"><span>Java</span><span>PostgreSQL</span><span>CI</span></div>
+          <a class="project__cta" href="https://possystem-pvup.onrender.com/" target="_blank" rel="noopener">Live demo ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SYSTEMS: interactive 3D architecture -->
+    <section class="systems section" id="systems">
+      <div class="section__label mono"><span>04</span> systems — instant kirana, under the hood</div>
+      <div class="systems__head">
+        <h2 class="h2 split">The <em>architecture</em>, live.</h2>
+        <p class="muted">This is the real topology behind Instant Kirana: four client apps, an API gateway, seven NestJS microservices and three datastores. The dots are requests moving through it. Drag to orbit, and click any node to inspect it.</p>
+      </div>
+      <div class="arch glass" id="arch">
+        <canvas id="archCanvas"></canvas>
+        <div class="arch__labels" id="archLabels"></div>
+        <aside class="arch__panel glass mono" id="archPanel">
+          <div class="arch__kind" id="archKind">system</div>
+          <h3 id="archTitle">Instant Kirana</h3>
+          <p id="archBody">Hyperlocal quick commerce for Tier-2/3 India. Click a node to see what it does and how it talks to the rest.</p>
+          <div class="arch__tags" id="archTags"><span>nestjs</span><span>docker-compose</span><span>socket.io</span></div>
+          <p class="nogl-note">4 client apps (customer, rider, kirana partner, admin) → API gateway → 7 NestJS microservices → PostgreSQL, MongoDB and Redis, with Socket.IO for live GPS and Razorpay for payments. The interactive 3D view needs WebGL, which this device doesn't have.</p>
+        </aside>
+        <div class="arch__legend mono"><span><i class="lg lg--client"></i>clients</span><span><i class="lg lg--svc"></i>services</span><span><i class="lg lg--data"></i>data</span><span><i class="lg lg--ext"></i>realtime / payments</span></div>
+        <div class="arch__stats mono" id="archStats">rps <b>0</b> · p95 <b>0ms</b> · cache hit <b>0%</b></div>
+      </div>
+    </section>
+
+    <!-- LIVE: real data from GitHub + npm -->
+    <section class="live section" id="live">
+      <div class="section__label mono"><span>05</span> live — fetched in your browser just now</div>
+      <h2 class="h2 split">Still <em>shipping</em>.</h2>
+      <div class="live__grid">
+        <div class="gitlog glass">
+          <div class="win-bar mono"><i></i><i></i><i></i><span>git log --author=rudra --oneline</span></div>
+          <ol class="gitlog__list mono" id="gitlog"><li class="muted">fetching commits…</li></ol>
+        </div>
+        <div class="live__side">
+          <div class="npm glass">
+            <div class="win-bar mono"><i></i><i></i><i></i><span>npm downloads · last 30 days</span></div>
+            <div class="npm__rows mono" id="npmRows"><div class="muted">asking the npm registry…</div></div>
+          </div>
+          <div class="activity glass">
+            <div class="win-bar mono"><i></i><i></i><i></i><span>commit activity · last 30 days</span></div>
+            <div class="activity__bars" id="activity"></div>
+            <div class="activity__meta mono" id="activityMeta">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WINS -->
+    <section class="wins section" id="wins">
+      <div class="section__label mono"><span>06</span> wins &amp; receipts</div>
+      <h2 class="h2 split">Trophies &amp; <em>receipts</em>.</h2>
+      <div class="wins__featured">
+        <article class="win glass tilt" data-hover>
+          <div class="medal" aria-hidden="true"><div class="medal__spin">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <div class="medal__face"><b>1</b><small>st</small></div>
+            <div class="medal__face medal__face--back"><b>SB</b></div>
+          </div></div>
+          <span class="mono win__tag">[ first prize · pitch competition ]</span>
+          <h3>Strategy Blitz <em>2.0</em></h3>
+          <p>A Shark Tank–style pitch in the Open Innovation track. I pitched <b>PrepSharp</b>: the problem JEE aspirants face, the product, the traction and the plan. We walked out with first prize.</p>
+          <div class="chips"><span>prepsharp</span><span>pitch</span><span>open-innovation</span></div>
+        </article>
+        <article class="win glass tilt" data-hover>
+          <div class="medal" aria-hidden="true"><div class="medal__spin">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <div class="medal__face"><b>1</b><small>st</small></div>
+            <div class="medal__face medal__face--back"><b>6h</b></div>
+          </div></div>
+          <span class="mono win__tag">[ winner · 6-hour hackathon ]</span>
+          <h3>6-Hour <em>Hackathon</em></h3>
+          <p>Six hours on the clock, from a blank repo to a working demo in front of the judges. We shipped it and took the win.</p>
+          <div class="chips"><span>speed-build</span><span>winner</span></div>
+        </article>
+      </div>
+      <ol class="timeline">
+        <li class="tl"><span class="tl__when mono">2026</span><div><h4>#2 — RootRush CTF</h4><p>Led team <em>Ctrl Alt Defend</em> at IIIT Bhopal to second place.</p></div></li>
+        <li class="tl"><span class="tl__when mono">2026</span><div><h4>GSSoC '26 Power Contributor</h4><p>10+ merged PRs: XSS sanitisation and password hashing on Cara, plus fixes on DailyForge, FindMyGSoC and a hybrid recommender.</p></div></li>
+        <li class="tl"><span class="tl__when mono">2026</span><div><h4>Smart India Hackathon 2026</h4><p>Competed in SIH 2026.</p></div></li>
+        <li class="tl"><span class="tl__when mono">2025</span><div><h4>HackXios 2K25</h4><p>Built FlowLink with Team DRONA, one of 187 projects from 1,300+ participants.</p></div></li>
+        <li class="tl"><span class="tl__when mono">2025 →</span><div><h4>Founded PrepSharp.in</h4><p>Grew it from a PDF-extraction script into a live CBT platform on web and Android.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section" id="skills">
+      <div class="section__label mono"><span>07</span> toolbox</div>
+      <div class="skills__grid">
+        <div>
+          <h2 class="h2 split">A stack that goes <em>all</em> the way down.</h2>
+          <p class="muted">From the pixel on a ₹8,000 Android phone to the Redis cache behind it. Strong in DSA, OOP, OS, DBMS, and backend &amp; distributed-system design.</p>
+          <div class="skill-groups glass">
+            <div class="sg"><h4 class="mono">frontend</h4><p>TypeScript · React · Next.js · Tailwind · Three.js · Motion</p></div>
+            <div class="sg"><h4 class="mono">mobile</h4><p>React Native · Expo · Kotlin · Android SDK · NativeWind</p></div>
+            <div class="sg"><h4 class="mono">backend</h4><p>Node.js · NestJS · PostgreSQL · MongoDB · Redis · Firebase · Socket.IO</p></div>
+            <div class="sg"><h4 class="mono">ai &amp; agents</h4><p>MCP servers · Claude Code · Cursor · Antigravity · RAG · OCR</p></div>
+            <div class="sg"><h4 class="mono">languages</h4><p>TypeScript · JavaScript · Java · C++ · Python · Kotlin</p></div>
+            <div class="sg"><h4 class="mono">ops</h4><p>Docker · Nginx · Vercel · GitHub Actions · Linux</p></div>
+          </div>
+        </div>
+        <div class="sphere-wrap">
+          <div class="sphere" id="sphere"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact section" id="contact">
+      <div class="section__label mono"><span>08</span> say hi</div>
+      <p class="contact__kicker mono">open to SWE internships &amp; interesting collaborations</p>
+      <a class="contact__big" href="mailto:Samadhiyarudra123@gmail.com" data-hover>
+        <span class="contact__line">Let's build</span>
+        <span class="contact__line"><em>something</em> real.</span>
+      </a>
+      <div class="contact__links">
+        <a class="magnetic glass" href="mailto:Samadhiyarudra123@gmail.com" data-hover>Email</a>
+        <a class="magnetic glass" href="https://linkedin.com/in/rudra-samadhiya" target="_blank" rel="noopener" data-hover>LinkedIn</a>
+        <a class="magnetic glass" href="https://github.com/Rudrasamadhiya" target="_blank" rel="noopener" data-hover>GitHub</a>
+        <a class="magnetic glass" href="https://rudrasamadhiya.github.io/leetcode/" target="_blank" rel="noopener" data-hover>LeetCode</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- TERMINAL -->
+  <div class="term" id="term-overlay" aria-hidden="true">
+    <div class="term__win glass" role="dialog" aria-label="rudra-sh terminal">
+      <div class="win-bar mono"><i></i><i></i><i></i><span>rudra@portfolio: ~ — rudra-sh</span><button id="termClose" aria-label="Close terminal">esc</button></div>
+      <div class="term__out mono" id="termOut"></div>
+      <label class="term__line mono"><span class="term__ps">rudra@portfolio:~$</span><input id="termIn" autocomplete="off" spellcheck="false" autocapitalize="off" /></label>
+      <div class="term__chips mono" id="termChips"></div>
+    </div>
+  </div>
+
+  <footer class="footer mono">
+    <span>© 2026 Rudra Samadhiya</span>
+    <span>three.js · motion · too much chai</span>
+    <a href="#top" data-hover>back to top ↑</a>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
