@@ -46,7 +46,7 @@ export function initArch() {
   const touch = matchMedia('(hover: none)').matches;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: gpu.tier !== 'low', alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, gpu.tier === 'low' ? 1.25 : 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, gpu.tier === 'low' ? 1.25 : 3));
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x0b0a09, 16, 30);
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);

@@ -50,7 +50,7 @@ const ORDER = ['android', 'expo', 'video'];
 
 export function initPhone(canvas, termEl, cards, tabs = []) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: gpu.tier !== 'low', alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, gpu.tier === 'low' ? 1.25 : 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, gpu.tier === 'low' ? 1.25 : 3));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 

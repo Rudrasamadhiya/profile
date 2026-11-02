@@ -8,6 +8,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
 import { gpu } from './gpu.js';
 
 // ---------------------------------------------------------------- world description
@@ -269,8 +270,7 @@ const finalPass = {
       vec3 col = vec3(texture2D(tDiffuse, vUv + o).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - o).b);
       col *= 1. - smoothstep(.35, .95, d) * .75;             // vignette
       col *= 1. - uDim * (.5 + .35 * (1. - smoothstep(.1, .75, vUv.x))); // dim behind content, more on the text side
-      col += (h(vUv * 900. + fract(uTime * 7.)) - .5) * .028; // film grain
-      col *= .97 + .03 * sin(vUv.y * 900.);                   // faint scanlines
+      col += (h(gl_FragCoord.xy + fract(uTime * 7.) * 100.) - .5) * .02; // per-pixel grain: stays fine at any resolution
       gl_FragColor = vec4(col, 1.);
     }`,
 };
@@ -282,9 +282,12 @@ export function initWorld(canvas) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance', failIfMajorPerformanceCaveat: false });
-  // quality ladder the FPS governor walks down: [pixel ratio, bloom]
-  const LEVELS = [[Math.min(devicePixelRatio, 1.6), true], [Math.min(devicePixelRatio, 1), true], [0.75, false], [0.5, false]];
-  let level = gpu.tier === 'low' ? 1 : 0;
+  // quality ladder the FPS governor walks down: [pixel ratio, bloom, SMAA]
+  // top rung renders at the display's native resolution (Retina, 4K, up to an 8K pixel budget)
+  const PX_8K = 7680 * 4320;
+  const native = () => Math.min(devicePixelRatio, 3, Math.sqrt(PX_8K / (innerWidth * innerHeight)));
+  const LEVELS = [[native(), true, true], [Math.min(devicePixelRatio, 2), true, false], [Math.min(devicePixelRatio, 1), true, false], [0.75, false, false], [0.5, false, false]];
+  let level = gpu.tier === 'low' ? 2 : 0;
   renderer.setPixelRatio(LEVELS[level][0]);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
@@ -403,18 +406,24 @@ export function initWorld(canvas) {
   const film = new ShaderPass(finalPass);
   composer.addPass(film);
   composer.addPass(new OutputPass());
+  // SMAA on the final image: clean tower edges at full resolution, works on every GPU
+  // (MSAA on the HDR buffer that bloom needs renders black on some GPUs)
+  const smaa = new SMAAPass(innerWidth, innerHeight);
+  composer.addPass(smaa);
   composer.setPixelRatio(LEVELS[level][0]);
   bloom.enabled = LEVELS[level][1];
+  smaa.enabled = LEVELS[level][2];
 
   // ---------------------------------------------------------------- FPS governor
   // Measures real frame rate in 2s windows once the intro has landed. Too slow → step
   // down a quality level; still unusable at the bottom → stop 3D, show the static backdrop.
   let dead = false, winStart = 0, winFrames = 0, strikes = 0;
   const applyLevel = () => {
-    const [pr, bl] = LEVELS[level];
+    const [pr, bl, aa] = LEVELS[level];
     renderer.setPixelRatio(pr); composer.setPixelRatio(pr);
     composer.setSize(innerWidth, innerHeight);
     bloom.enabled = bl;
+    smaa.enabled = aa;
   };
   const fail = () => {
     if (dead) return;
@@ -459,6 +468,8 @@ export function initWorld(canvas) {
 
   const resize = () => {
     const w = innerWidth, h = innerHeight;
+    LEVELS[0][0] = native(); // moving to another monitor can change the native ratio
+    if (level === 0) { renderer.setPixelRatio(LEVELS[0][0]); composer.setPixelRatio(LEVELS[0][0]); }
     renderer.setSize(w, h, false);
     composer.setSize(w, h);
     bloom.resolution.set(w / 2, h / 2);
@@ -548,7 +559,8 @@ export function initWorld(canvas) {
     const sec = shots[Math.round(i + e)]?.id;
     const wantDim = sec === 'hero' || sec === 'contact' ? 0 : 1;
     film.uniforms.uDim.value += (wantDim - film.uniforms.uDim.value) * (1 - Math.exp(-dt * 2.5));
-    film.uniforms.uAberr.value = 0.0012 + Math.min(Math.abs(p - smooth) * 0.08, 0.004);
+    // colour fringing only while the camera is moving fast; at rest the image stays sharp
+    film.uniforms.uAberr.value = 0.0003 + Math.min(Math.abs(p - smooth) * 0.08, 0.004);
 
     composer.render(dt);
 
@@ -586,7 +598,7 @@ function initHud(blocks) {
   const root = document.getElementById('hud');
   const map = document.getElementById('hudMap');
   const size = 150;
-  const dpr = Math.min(devicePixelRatio, 2);
+  const dpr = Math.min(devicePixelRatio, 3);
   map.width = map.height = size * dpr;
   const g = map.getContext('2d');
   g.scale(dpr, dpr);
